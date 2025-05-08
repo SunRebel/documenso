@@ -51,7 +51,7 @@ export const ZDocumentEmailSettingsSchema = z
     ownerDocumentCompleted: z
       .boolean()
       .describe('Whether to send an email to the document owner when the document is complete.')
-      .default(true),
+      .default(false),
   })
   .strip()
   .catch(() => ({
@@ -61,7 +61,7 @@ export const ZDocumentEmailSettingsSchema = z
     documentPending: true,
     documentCompleted: true,
     documentDeleted: true,
-    ownerDocumentCompleted: true,
+    ownerDocumentCompleted: false,
   }));
 
 export type TDocumentEmailSettings = z.infer<typeof ZDocumentEmailSettingsSchema>;
