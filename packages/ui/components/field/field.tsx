@@ -80,9 +80,10 @@ export function FieldRootContainer({ field, children, color, className }: FieldR
         data-field-type={field.type}
         data-inserted={field.inserted ? 'true' : 'false'}
         className={cn(
-          'field--FieldRootContainer field-card-container dark-mode-disabled group relative z-20 flex h-full w-full items-center rounded-[2px] bg-white/90 ring-2 ring-gray-200 transition-all',
-          color?.base,
+          'dark-mode-disabled group relative z-20 flex h-full w-full items-center rounded-[2px] ring-gray-200 transition-all',
+          !field.fieldMeta?.readOnly && color?.base,
           {
+            'bg-white/90 ring-2': !field.fieldMeta?.readOnly,
             'px-2': field.type !== FieldType.SIGNATURE && field.type !== FieldType.FREE_SIGNATURE,
             'justify-center': !field.inserted,
             'ring-orange-300': isValidating && isFieldUnsignedAndRequired(field),

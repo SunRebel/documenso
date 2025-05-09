@@ -252,9 +252,7 @@ export const DocumentSigningTextField = ({
 
       {field.inserted && (
         <DocumentSigningFieldsInserted textAlign={parsedFieldMeta?.textAlign}>
-          {field.customText.length < 20
-            ? field.customText
-            : field.customText.substring(0, 20) + '...'}
+          {field.customText}
         </DocumentSigningFieldsInserted>
       )}
 
