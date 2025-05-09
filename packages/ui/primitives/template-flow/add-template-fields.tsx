@@ -517,7 +517,7 @@ export const AddTemplateFieldsFormPartial = ({
                     width: fieldBounds.current.width,
                   }}
                 >
-                  <span className="text-[clamp(0.1rem,25cqw,0.825rem)]">
+                  <span className="text-[clamp(0.1rem,2cqw,0.825rem)]">
                     {parseMessageDescriptor(_, FRIENDLY_FIELD_TYPE[selectedField])}
                   </span>
                 </div>
