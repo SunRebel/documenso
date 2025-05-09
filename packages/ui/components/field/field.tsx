@@ -46,9 +46,16 @@ export type FieldRootContainerProps = {
   color?: RecipientColorStyles;
   children: React.ReactNode;
   className?: string;
+  readOnly?: boolean;
 };
 
-export function FieldRootContainer({ field, children, color, className }: FieldRootContainerProps) {
+export function FieldRootContainer({
+  field,
+  children,
+  color,
+  className,
+  readOnly,
+}: FieldRootContainerProps) {
   const [isValidating, setIsValidating] = useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -81,9 +88,9 @@ export function FieldRootContainer({ field, children, color, className }: FieldR
         data-inserted={field.inserted ? 'true' : 'false'}
         className={cn(
           'dark-mode-disabled group relative z-20 flex h-full w-full items-center rounded-[2px] ring-gray-200 transition-all',
-          !field.fieldMeta?.readOnly && color?.base,
+          !readOnly && color?.base,
           {
-            'bg-white/90 ring-2': !field.fieldMeta?.readOnly,
+            'bg-white/90 ring-2': !readOnly,
             'px-2': field.type !== FieldType.SIGNATURE && field.type !== FieldType.FREE_SIGNATURE,
             'justify-center': !field.inserted,
             'ring-orange-300': isValidating && isFieldUnsignedAndRequired(field),

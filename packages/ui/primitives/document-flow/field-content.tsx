@@ -28,12 +28,13 @@ type FieldIconProps = {
     signature?: Signature | null;
   };
   documentMeta?: DocumentMeta | TemplateMeta;
+  readOnly?: boolean;
 };
 
 /**
  * Renders the content inside field containers prior to sealing.
  */
-export const FieldContent = ({ field, documentMeta }: FieldIconProps) => {
+export const FieldContent = ({ field, documentMeta, readOnly }: FieldIconProps) => {
   const { _ } = useLingui();
 
   const { type, fieldMeta } = field;
@@ -173,12 +174,13 @@ export const FieldContent = ({ field, documentMeta }: FieldIconProps) => {
   return (
     <div
       className={cn(
-        'text-field-card-foreground flex h-full w-full items-center justify-center gap-x-1.5 overflow-clip whitespace-nowrap text-center text-[clamp(0.07rem,25cqw,0.825rem)]',
+        'text-field-card-foreground flex h-full w-full items-center justify-center gap-x-1.5 overflow-clip whitespace-nowrap text-center text-[clamp(0.07rem,2cqw,0.825rem)]',
         {
           // Using justify instead of align because we also vertically center the text.
           'justify-start': field.inserted && !isSignatureField && textAlign === 'left',
           'justify-end': field.inserted && !isSignatureField && textAlign === 'right',
           'font-signature text-[clamp(0.07rem,25cqw,1.125rem)]': isSignatureField,
+          'overflow-visible': readOnly,
         },
       )}
     >

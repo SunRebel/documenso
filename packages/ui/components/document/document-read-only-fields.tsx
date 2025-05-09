@@ -100,8 +100,9 @@ export const DocumentReadOnlyFields = ({
                     )
                   : undefined
               }
+              readOnly
             >
-              {showRecipientTooltip && (
+              {false && showRecipientTooltip && (
                 <div className="absolute -right-3 -top-3">
                   <PopoverHover
                     trigger={
@@ -161,7 +162,7 @@ export const DocumentReadOnlyFields = ({
                 </div>
               )}
 
-              <FieldContent field={field} documentMeta={documentMeta} />
+              <FieldContent field={field} documentMeta={documentMeta} readOnly />
             </FieldRootContainer>
           ),
       )}
